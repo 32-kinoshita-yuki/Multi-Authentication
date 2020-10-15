@@ -67,3 +67,6 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::post('logout', 'Influ\Auth\LoginController@logout')->name('influ.logout');
     Route::get('home', 'Influ\HomeController@index')->name('influ.home');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
