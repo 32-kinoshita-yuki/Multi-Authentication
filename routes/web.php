@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+    //admin ログイン前
 Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
     Route::get('/', function () {
         return view('admin.welcome');
@@ -36,15 +38,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
     Route::get('password/rest', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 
 
-});
-
+    });
+     //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
-});
+    });
 
 
 
+    //influ　ログイン前
 Route::group(['prefix' => 'influ', 'middleware' => 'guest:influ'], function() {
     Route::get('/', function () {
         return view('influ.welcome');
@@ -59,10 +62,24 @@ Route::group(['prefix' => 'influ', 'middleware' => 'guest:influ'], function() {
     Route::post('register', 'Influ\Auth\RegisterController@register')->name('influ.register');
 
     Route::get('password/rest', 'Influ\Auth\ForgotPasswordController@showLinkRequestForm')->name('influ.password.request');
-
-
-});
-
+    });
+    
+Route::group(['prefix' => 'influ'], function() {
+    Route::get('/blog', 'Influ\Auth\BlogController@showList')->name('blogs');           //blog一覧を表示
+    Route::get('/blog/{id}', 'Influ\Auth\BlogController@showDetail')->name('show');     //blog詳細を表示
+    Route::get('/blog/create', 'Influ\Auth\BlogController@showCreate')->name('create'); //blog登録画面を表示
+    Route::post('/blog/store', 'Influ\Auth\BlogController@exeStore')->name('store');    //blogの登録
+    Route::get('/blog/edit/{id}', 'Influ\Auth\BlogController@showEdit')->name('edit');  //blog編集を表示
+    Route::post('/blog/update', 'Influ\Auth\BlogController@exeUpdate')->name('update'); //blog編集
+    Route::post('/blog/delete/{id}', 'Influ\Auth\BlogController@exeDelete')->name('delete');  //blog削除
+    
+    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');           //profile一覧を表示
+    Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('show');     //profile詳細を表示
+    Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('create');    //profile登録を表示
+    Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('store');       //profileを登録を登録する
+    });
+    
+    //influ　ログイン後
 Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::post('logout', 'Influ\Auth\LoginController@logout')->name('influ.logout');
     Route::get('home', 'Influ\HomeController@index')->name('influ.home');
@@ -70,3 +87,7 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+     
+    
+
+ 
