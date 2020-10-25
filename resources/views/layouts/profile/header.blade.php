@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="{{ route('profiles') }}">インフルエンサー一覧 <span class="sr-only"></span></a>
-      <a class="nav-item nav-link" href="{{ route('create') }}">プロフィール作成</a>
+      <a class="nav-item nav-link" href="{{ route('profilecreate') }}">プロフィール作成</a>
     </div>
   </div>
 </nav>

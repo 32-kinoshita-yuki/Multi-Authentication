@@ -26,9 +26,9 @@
             </div>
             <div class="form-group">
                 <label for="gender">
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="{{ old('gender') }}">女性
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="{{ old('gender') }}">男性
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="{{ old('gender') }}">無回答
+                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">女性
+                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">男性
+                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">無回答
                 </label>
                
                 @if ($errors->has('gender'))  {{-- バリテーションを受け取るための処理 --}}
@@ -58,10 +58,10 @@
             <div class="form-group">
                 <label for="sns_kind">
                     使用するsns<br>
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="{{ old('sns_kind') }}">Instagram
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="{{ old('sns_kind') }}">Twitter
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="{{ old('sns_kind') }}">Youtube
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="{{ old('sns_kind') }}">その他
+                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Instagram
+                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Twitter
+                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Youtube
+                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">その他
                 </label>
                 
                 @if ($errors->has('sns_kind'))
@@ -92,13 +92,13 @@
             <div class="form-group">
                 <label for="sns_genre">
                     SNSのジャンル<br>
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">プライベート
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">コスメ
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">モデル
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">グラビア
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">料理
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">生活・インテリア
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="{{ old('sns_genre') }}">その他
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">プライベート
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">コスメ
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">モデル
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">グラビア
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">料理
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">生活・インテリア
+                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">その他
                 </label>
                 
                 @if ($errors->has('sns_genre'))
