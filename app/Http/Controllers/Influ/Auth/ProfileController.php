@@ -26,6 +26,7 @@ class ProfileController extends Controller
    * @return view
    */
    
+    /**
   public function showDetail($id) 
   {
       $profile = Profile::find($id);     //変数名$blogにBlogモデルのデータをすべて渡す
@@ -33,12 +34,14 @@ class ProfileController extends Controller
         if (is_null($profile))
         {                    //もしnullだったらindexにredirectさせる
             \Session::flash('err_msg','データがありません');
-            return redirect(route('profiles'));
+           return redirect(route('profiles'));
         }
        return view('influ.auth.profile.detail',
         ['profile' => $profile]);
       
   }
+   */
+   
      /**
    * プロフィールを登録する 表示
    * @return view

@@ -74,7 +74,7 @@ Route::group(['prefix' => 'influ'], function() {
     Route::post('/blog/delete/{id}', 'Influ\Auth\BlogController@exeDelete')->name('delete');  //blog削除
     
     Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');           //profile一覧を表示
-    Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('show');     //profile詳細を表示
+   // Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('show');     //profile詳細を表示
     Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('create');    //profile登録を表示
     Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('store');       //profileを登録を登録する
     });
