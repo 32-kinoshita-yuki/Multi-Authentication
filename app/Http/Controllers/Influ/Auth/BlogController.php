@@ -34,7 +34,7 @@ class BlogController extends Controller
       $blog = Blog::find($id);                   //変数名$blogにBlogモデルのデータをすべて渡す
        
         if (is_null($blog))
-        {                    //もしnullだったらindexにredirectさせる
+        {                    //もしnull（空）だったらindex('blogs')にredirectさせる
             \Session::flash('err_msg','データがありません');
             return redirect(route('blogs'));
         }

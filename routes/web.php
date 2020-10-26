@@ -37,8 +37,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
 
     Route::get('password/rest', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 
-
     });
+    
+    Route::group(['prefix' => 'admin'], function() {
+    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');           //profile一覧を表示
+   // Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('show');     //profile詳細を表示
+    Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('profilecreate');    //profile登録を表示
+    Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('store');       //profileを登録する
+    });
+    
      //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
