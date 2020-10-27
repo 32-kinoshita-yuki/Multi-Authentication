@@ -13,7 +13,7 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('profiles')) { //profile_テーブルがなかったら
+        if(!Schema::hasTable('profiles')) { //profileテーブルがなかったら
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name'); // 名前を保存するカラム

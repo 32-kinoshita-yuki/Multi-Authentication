@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Profile;
 use App\Http\Requests\ProfileRequet;
+
 class ProfileController extends Controller
 {
   /**

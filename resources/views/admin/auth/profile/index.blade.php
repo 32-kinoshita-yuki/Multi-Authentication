@@ -1,10 +1,10 @@
-@extends('layouts.profile.layout')
-@section('title','インフルエンサー一覧')
+@extends('layouts.adminprofile.layout')
+@section('title','PR希望会社一覧')
 @section('content')
 <div class="content"> 
   <div class="row">
   <div class="col-md-10 col-md-offset-2">
-      <h2>インフルエンサー一覧</h2>
+      <h2>PR希望会社一覧</h2>
        @if (session('err_msg'))
       <p class="texit-danger">
          {{ session('err_msg') }}
@@ -13,22 +13,20 @@
       
       <table class="table table-striped">
           <tr>
-              <th>ニックネーム</th>
-              <th>性別</th>
-              <th>年齢</th>
-              <th>使用するSNS</th>
-              <th>ジャンル</th>
+              <th>会社の名前</th>
+              <th>PR商品やサービスの説明</th>
+              <th>PR料金</th>
+              <th></th>
+              <th></th>
           </tr>
-          @foreach($profiles as $profile)
+          @foreach($admin_profiles as $admin_profile)
          <tr>
-           <td><a href="/profile/{{ $profile->id }}">{{ $profile->name }}</a></td>
-           <td>{{ $profile->gender }}</td>
-           <td>{{ $profile->age }}</td>
-           <td>{{ $profile->sns_kind }}</td>
-           <td>{{ $profile->sns_url }}</td>
-           <td>{{ $profile->sns_genre }}</td>
-           <td><button type="button" class="btnbtn-primary" onclick="location.href='/profile/edit/{{ $profile->id }}'">編集</button></td>
-           <form method="POST" action="{{ route('delete',$profile->id) }}" onSubmit="return checkDelete()">
+           <td><a href="{{ route('adminshow', ['id' => $admin_profile->id]) }}">{{ $admin_profile->name }}</a></td>
+           <td>{{ $admin_profile->body_pr }}</td>
+           <td>{{ $admin_profile->price }}</td>
+          
+           <td><button type="button" class="btnbtn-primary" onclick="location.href='/admin/profile/edit/{{ $admin_profile->id }}'">編集</button></td>
+           <form method="POST" action="{{ route('admindelete',$admin_profile->id) }}" onSubmit="return checkDelete()">
            @csrf
            <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>
          </tr>

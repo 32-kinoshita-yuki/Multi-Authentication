@@ -40,10 +40,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
     });
     
     Route::group(['prefix' => 'admin'], function() {
-    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');           //profile一覧を表示
-    Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('show');     //profile詳細を表示
-    Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('profilecreate');    //profile登録を表示
-    Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('store');       //profileを登録する
+    Route::get('/profile', 'Admin\Auth\ProfileController@showList')->name('adminprofiles');                    //PR希望会社一覧画面表示
+    
+    Route::get('/profile/create', 'Admin\Auth\ProfileController@showCreate')->name('admincreate');      //PR希望会社登録画面を表示
+    Route::post('/profile/store', 'Admin\Auth\ProfileController@exeStore')->name('adminstore');                //PR希望会社を登録する
+    Route::get('/blog/edit/{id}', 'Admin\Auth\ProfileController@showEdit')->name('edit');                    //PR希望会社編集画面を表示
+    Route::post('/blog/update', 'Admin\Auth\ProfileController@exeUpdate')->name('update');                   //PR希望会社編集
+    Route::post('/profile/delete/{id}', 'Admin\Auth\ProfileController@exeDelete')->name('admindelete'); //PR希望会社削除
+    Route::get('/profile/{id}', 'Admin\Auth\ProfileController@showDetail')->name('adminshow');                 //PR希望会社詳細を表示
+  
     });
     
      //admin ログイン後
@@ -72,21 +77,21 @@ Route::group(['prefix' => 'influ', 'middleware' => 'guest:influ'], function() {
     });
     
 Route::group(['prefix' => 'influ'], function() {
-    Route::get('/blog', 'Influ\Auth\BlogController@showList')->name('blogs');           //blog一覧を表示
+    Route::get('/blog', 'Influ\Auth\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
     
-    Route::get('/blog/create', 'Influ\Auth\BlogController@showCreate')->name('create'); //blog登録画面を表示
-    Route::post('/blog/store', 'Influ\Auth\BlogController@exeStore')->name('store');    //blogの登録
-    Route::get('/blog/edit/{id}', 'Influ\Auth\BlogController@showEdit')->name('edit');  //blog編集を表示
-    Route::post('/blog/update', 'Influ\Auth\BlogController@exeUpdate')->name('update'); //blog編集
+    Route::get('/blog/create', 'Influ\Auth\BlogController@showCreate')->name('create');       //blog登録画面を表示
+    Route::post('/blog/store', 'Influ\Auth\BlogController@exeStore')->name('store');          //blogを登録する
+    Route::get('/blog/edit/{id}', 'Influ\Auth\BlogController@showEdit')->name('edit');        //blog編集画面を表示
+    Route::post('/blog/update', 'Influ\Auth\BlogController@exeUpdate')->name('update');       //blog編集
     Route::post('/blog/delete/{id}', 'Influ\Auth\BlogController@exeDelete')->name('delete');  //blog削除
-    Route::get('/blog/{id}', 'Influ\Auth\BlogController@showDetail')->name('show');     //blog詳細を表示
+    Route::get('/blog/{id}', 'Influ\Auth\BlogController@showDetail')->name('show');           //blog詳細を表示
     
-    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');           //profile一覧を表示
+    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');                    //profile一覧画面を表示
     
-    Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('profilecreate'); //profile登録を表示
-    Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('profilestore');           //profileを登録する
-    Route::get('/profile/edit/{id}', 'Influ\Auth\ProfileController@showEdit')->name('profileedit');         //profile編集を表示
-    Route::post('/profile/update', 'Influ\Auth\ProfileController@exeUpdate')->name('profileupdate'); //profile編集
+    Route::get('/profile/create', 'Influ\Auth\ProfileController@showCreate')->name('profilecreate');      //profile登録画面を表示
+    Route::post('/profile/store', 'Influ\Auth\ProfileController@exeStore')->name('profilestore');         //profileを登録する
+    Route::get('/profile/edit/{id}', 'Influ\Auth\ProfileController@showEdit')->name('profileedit');       //profile編集画面を表示
+    Route::post('/profile/update', 'Influ\Auth\ProfileController@exeUpdate')->name('profileupdate');      //profile編集
     Route::post('/profile/delete/{id}', 'Influ\Auth\ProfileController@exeDelete')->name('profiledelete'); //profile削除
     Route::get('/profile/{id}', 'Influ\Auth\ProfileController@showDetail')->name('showprofile');          //profile詳細を表示
     });

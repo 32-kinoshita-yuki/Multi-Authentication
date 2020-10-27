@@ -1,13 +1,17 @@
-@extends('layouts.profile.layout')
-@section('title','プロフィール詳細')
+@extends('layouts.adminprofile.layout')
+@section('title','PR希望会社詳細')
 @section('content')
 <div class="content"> 
   <div class="row">
   <div class="col-md-8 col-md-offset-2">
-      <h2>{{ $blog->title }}</h2>
-      <span>作成日:{{ $profile->gender }}</span>
-      <span>更新日:{{ $profile->age }}</span>
-      <span>SNSの種類:{{ $profile->sns_kind }}</span>
+      <h2>{{ $admin_profile->name_company }}</h2>
+     
+      <span>会社の住所:{{ $admin_profile->address }}</span><br>
+      <span>担当者名:{{ $admin_profile->name }}</span><br>
+      <span>報酬:{{ $admin_profile->price }}</span><br><br>
+       <button type="submit" class="btn btn-primary">
+                    PR活動を申し込む
+                </button>
   </div>
 </div>
 </div>

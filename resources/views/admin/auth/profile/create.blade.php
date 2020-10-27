@@ -1,15 +1,34 @@
-@extends('layouts.profile.layout')
-@section('title','プロフィール登録')
+@extends('layouts.adminprofile.layout')
+@section('title','PR希望登録')
 @section('content')
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>プロフィール登録フォーム</h2>
-        <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()"> 
+        <h2>PR希望登録フォーム</h2>
+        <form method="POST" action="{{ route('adminstore') }}" onSubmit="return checkSubmit()"> 
          @csrf
+         
+          <div class="form-group">
+                <label for="name_company">
+                    会社名
+                </label>
+                <input
+                    id="name_company"
+                    name="name_company"
+                    class="form-control"
+                    value="{{ old('name_company') }}"
+                    type="text"
+                >
+                @if ($errors->has('name_company'))
+                    <div class="text-danger">
+                        {{ $errors->first('name_company') }}
+                    </div>
+                @endif
+            </div>
+         
             <div class="form-group">
                 <label for="name">
-                    ニックネーム
+                    担当者名
                 </label>
                 <input
                     id="name"
@@ -24,91 +43,133 @@
                     </div>
                 @endif
             </div>
-            <div class="form-group">
-                <label for="gender">
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">女性
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">男性
-                <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">無回答
-                </label>
-               
-               
-                @if ($errors->has('gender'))  {{-- バリテーションを受け取るための処理 --}}
-                    <div class="text-danger">
-                        {{ $errors->first('gender') }}
-                    </div>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="age">
-                    年齢
+            
+             <div class="form-group">
+                <label for="address">
+                    会社の住所
                 </label>
                 <input
-                    id="age"
-                    name="age"
+                    id="address"
+                    name="address"
                     class="form-control"
-                    value="{{ old('age') }}"
-                    type="age"
-                >
-                @if ($errors->has('age'))
-                    <div class="text-danger">
-                        {{ $errors->first('age') }}
-                    </div>
-                @endif
-            </div>
-            
-            <div class="form-group">
-                <label for="sns_kind">
-                    使用するsns<br>
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Instagram
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Twitter
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">Youtube
-                    <input type="checkbox"  class="form-contro2" name="sns_kind" id="sns_kind" value="sns_kind">その他
-                </label>
-                
-                @if ($errors->has('sns_kind'))
-                    <div class="text-danger">
-                        {{ $errors->first('sns_kind') }}
-                    </div>
-                @endif
-            </div>
-            
-            <div class="form-group">
-                <label for="sns_url">
-                    SNSのURL
-                </label>
-                <input
-                    id="sns_url"
-                    name="sns_url"
-                    class="form-control"
-                    value="{{ old('sns_url') }}"
+                    value="{{ old('address') }}"
                     type="text"
                 >
-                @if ($errors->has('sns_url'))
+                @if ($errors->has('address'))
                     <div class="text-danger">
-                        {{ $errors->first('sns_url') }}
+                        {{ $errors->first('address') }}
                     </div>
                 @endif
             </div>
             
             <div class="form-group">
-                <label for="sns_genre">
-                    SNSのジャンル<br>
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">プライベート
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">コスメ
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">モデル
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">グラビア
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">料理
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">生活・インテリア
-                    <input type="checkbox"  class="form-contro2" name="sns_genre" id="sns_genre" value="sns_genre">その他
+                <label for="email">
+                    メールアドレス
                 </label>
-                
-                @if ($errors->has('sns_genre'))
+                <input
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    value="{{ old('email') }}"
+                    type="email"
+                >
+                @if ($errors->has('email'))
                     <div class="text-danger">
-                        {{ $errors->first('sns_genre') }}
+                        {{ $errors->first('email') }}
                     </div>
                 @endif
             </div>
             
+            <div class="form-group">
+                <label for="tell">
+                    会社の電話番号
+                </label>
+                <input
+                    id="tell"
+                    name="tell"
+                    class="form-control"
+                    value="{{ old('tell') }}"
+                    type="text"
+                >
+                @if ($errors->has('tell'))
+                    <div class="text-danger">
+                        {{ $errors->first('tell') }}
+                    </div>
+                @endif
+            </div>
+            
+            <div class="form-group">
+                <label for="url_company">
+                    会社のurl
+                </label>
+                <input
+                    id="url_company"
+                    name="url_company"
+                    class="form-control"
+                    value="{{ old('url_company') }}"
+                    type="text"
+                >
+                @if ($errors->has('url_company'))
+                    <div class="text-danger">
+                        {{ $errors->first('url_company') }}
+                    </div>
+                @endif
+            </div>
+            
+            <div class="form-group">
+                <label for="url_pr">
+                    PR商品やサービスのurl
+                </label>
+                <input
+                    id="url_pr"
+                    name="url_pr"
+                    class="form-control"
+                    value="{{ old('url_pr') }}"
+                    type="text"
+                >
+                @if ($errors->has('url_pr'))
+                    <div class="text-danger">
+                        {{ $errors->first('url_pr') }}
+                    </div>
+                @endif
+            </div>
+            
+　　　　　　<div class="form-group">
+                <label for="body_pr">
+                    PR商品やサービスの説明
+                </label>
+                <input
+                    id="body_pr"
+                    name="body_pr"
+                    class="form-control"
+                    value="{{ old('body_pr') }}"
+                    type="text"
+                >
+                @if ($errors->has('body_pr'))
+                    <div class="text-danger">
+                        {{ $errors->first('body_pr') }}
+                    </div>
+                @endif
+            </div>
+
+             <div class="form-group">
+                <label for="price">
+                    PR料金
+                </label>
+                <input
+                    id="price"
+                    name="price"
+                    class="form-control"
+                    value="{{ old('price') }}"
+                    type="text"
+                >
+                @if ($errors->has('price'))
+                    <div class="text-danger">
+                        {{ $errors->first('price') }}
+                    </div>
+                @endif
+            </div>
+
             <div class="mt-5">
                 
                 <button type="submit" class="btn btn-primary">
