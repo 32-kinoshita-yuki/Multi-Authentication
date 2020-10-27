@@ -26,10 +26,10 @@ class ProfileController extends Controller
    * @return view
    */
    
-    /**
+    
   public function showDetail($id) 
   {
-      $profile = Profile::find($id);     //変数名$blogにBlogモデルのデータをすべて渡す
+      $profile = Profile::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
        
         if (is_null($profile))
         {                    //もしnullだったらindexにredirectさせる
@@ -40,7 +40,7 @@ class ProfileController extends Controller
         ['profile' => $profile]);
       
   }
-   */
+  
    
      /**
    * プロフィールを登録する 表示
@@ -71,4 +71,43 @@ class ProfileController extends Controller
        \Session::flash('err_msg', 'プロフィールを登録しました');
       return redirect(route('profiles'));
    }
+   
+   /**
+   * プロフィール編集フォームを表示する
+   * @param int $id
+   * @return view
+   */
+ public function showEdit($id) 
+ {
+     $profile = Profile::find($id);                   //変数名$profileにProfileモデルのデータをすべて渡す
+        if (is_null($profile))
+        {                    //もしnullだったらindexにredirectさせる
+            \Session::flash('err_msg','データがありません');
+            return redirect(route('profiles'));
+        }
+       return view('influ.auth.profile.edit',
+       ['profile' => $profile]);
+ }
+  /**
+   * プロフィール削除を表示する
+   * @param int $id
+   * @return view
+   */
+   public function exeDelete($id) 
+ {
+     if (empty($id)) {                    //もし空だったらindexにredirectさせる
+            \Session::flash('err_msg','データがありません');
+            return redirect(route('profiles'));
+        }
+     try {
+       //プロフィールを削除
+      Profile::destroy($id);                   //変数名$profileにProfileモデルのデータをすべて渡す
+       }catch(\Throwable $e) {
+           about(500);
+       }
+     
+      \Session::flash('err_msg','削除しました。');
+       return redirect(route('profiles'));
+ }
+  
 }

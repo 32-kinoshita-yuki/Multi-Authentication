@@ -1,6 +1,7 @@
-@extends('layout.blog.layout')
+@extends('layouts.blog.layout')
 @section('title', 'ブログ投稿')
 @section('content')
+<div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>ブログ投稿フォーム</h2>
@@ -40,15 +41,14 @@
                 @endif
             </div>
             <div class="mt-5">
-                <a class="btn btn-secondary" href="{{ route('blogs') }}">
-                    キャンセル
-                </a>
+                
                 <button type="submit" class="btn btn-primary">
                     投稿する
                 </button>
             </div>
         </form>
     </div>
+</div>
 </div>
 <script>
 function checkSubmit(){

@@ -1,11 +1,11 @@
 @extends('layouts.profile.layout')
-@section('title','プロフィール登録')
+@section('title','プロフィール編集')
 @section('content')
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>プロフィール登録フォーム</h2>
-        <form method="POST" action="{{ route('profilestore') }}" onSubmit="return checkSubmit()"> 
+        <form method="POST" action="{{ route('profileupdate') }}" onSubmit="return checkSubmit()"> 
          @csrf
             <div class="form-group">
                 <label for="name">
@@ -145,7 +145,7 @@
             <div class="mt-5">
                 
                 <button type="submit" class="btn btn-primary">
-                    登録する
+                    更新する
                 </button>
             </div>
         </form>
@@ -154,7 +154,7 @@
 </div>
 <script>
 function checkSubmit(){
-if(window.confirm('送信してよろしいですか？')){
+if(window.confirm('更新してよろしいですか？')){
     return true;
 } else {
     return false;

@@ -31,6 +31,7 @@
                 <input type="radio" class="form-contro2" name="gender" id="gender" value="gender">無回答
                 </label>
                
+               
                 @if ($errors->has('gender'))  {{-- バリテーションを受け取るための処理 --}}
                     <div class="text-danger">
                         {{ $errors->first('gender') }}

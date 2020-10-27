@@ -33,6 +33,7 @@ class BlogController extends Controller
   {
       $blog = Blog::find($id);                   //変数名$blogにBlogモデルのデータをすべて渡す
        
+       
         if (is_null($blog))
         {                    //もしnull（空）だったらindex('blogs')にredirectさせる
             \Session::flash('err_msg','データがありません');
@@ -87,7 +88,7 @@ class BlogController extends Controller
             return redirect(route('blogs'));
         }
        return view('influ.auth.blog.edit',
-       ['blogs' => $blog]);
+       ['blog' => $blog]);
  }
   /**
    * ブログ削除を表示する

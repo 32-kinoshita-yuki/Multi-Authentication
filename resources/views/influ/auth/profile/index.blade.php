@@ -17,18 +17,21 @@
               <th>性別</th>
               <th>年齢</th>
               <th>使用するSNS</th>
+              <th>SNSのURL</th>
               <th>ジャンル</th>
+              <th></th>
+              <th></th>
           </tr>
           @foreach($profiles as $profile)
          <tr>
-           <td><a href="/profile/{{ $profile->id }}">{{ $profile->name }}</a></td>
+           <td><a href="{{ route('showprofile', ['id' => $profile->id]) }}">{{ $profile->name }}</a></td>
            <td>{{ $profile->gender }}</td>
            <td>{{ $profile->age }}</td>
            <td>{{ $profile->sns_kind }}</td>
            <td>{{ $profile->sns_url }}</td>
            <td>{{ $profile->sns_genre }}</td>
            <td><button type="button" class="btnbtn-primary" onclick="location.href='/profile/edit/{{ $profile->id }}'">編集</button></td>
-           <form method="POST" action="{{ route('delete',$profile->id) }}" onSubmit="return checkDelete()">
+           <form method="POST" action="{{ route('profiledelete',$profile->id) }}" onSubmit="return checkDelete()">
            @csrf
            <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>
          </tr>
