@@ -19,8 +19,8 @@
               <th>使用するSNS</th>
               <th>SNSのURL</th>
               <th>ジャンル</th>
-              <th></th>
-              <th></th>
+              
+             
           </tr>
           @foreach($profiles as $profile)
          <tr>

@@ -22,7 +22,7 @@ class ProfileController extends Controller
      ['profiles' => $profiles]);     //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
     }
     /**
-   * ブログ詳細を表示する
+   * プロフィール詳細を表示する
    * @param int $id
    * @return view
    */

@@ -39,22 +39,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
 
     });
     
-    Route::group(['prefix' => 'admin'], function() {
-    Route::get('/profile', 'Admin\ProfileController@showList')->name('adminprofiles');                    //PR希望会社一覧画面表示
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/profile', 'Admin\ProfileController@showList')->name('adminprofiles');             //PR希望会社一覧画面表示
     
     Route::get('/profile/create', 'Admin\ProfileController@showCreate')->name('admincreate');      //PR希望会社登録画面を表示
-    Route::post('/profile/store', 'Admin\ProfileController@exeStore')->name('adminstore');                //PR希望会社を登録する
-    Route::get('/blog/edit/{id}', 'Admin\ProfileController@showEdit')->name('adminprofileedit');                    //PR希望会社編集画面を表示
-    Route::post('/blog/update', 'Admin\ProfileController@exeUpdate')->name('adminprofileupdate');                   //PR希望会社編集
+    Route::post('/profile/store', 'Admin\ProfileController@exeStore')->name('adminstore');         //PR希望会社を登録する
+    Route::get('/blog/edit/{id}', 'Admin\ProfileController@showEdit')->name('adminprofileedit');   //PR希望会社編集画面を表示
+    Route::post('/blog/update', 'Admin\ProfileController@exeUpdate')->name('adminprofileupdate');  //PR希望会社編集
     Route::post('/profile/delete/{id}', 'Admin\ProfileController@exeDelete')->name('admindelete'); //PR希望会社削除
-    Route::get('/profile/{id}', 'Admin\ProfileController@showDetail')->name('adminshow');                 //PR希望会社詳細を表示
-  
+    Route::get('/profile/{id}', 'Admin\ProfileController@showDetail')->name('adminshow');          //PR希望会社詳細を表示
+    
+    
     });
     
      //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
-    Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+    Route::get('home', 'Admin\InfluController@showList')->name('profiles');                        //インフルエンサー一覧
     });
 
 
@@ -86,7 +87,7 @@ Route::group(['prefix' => 'influ'], function() {
     Route::post('/blog/delete/{id}', 'Influ\Auth\BlogController@exeDelete')->name('delete');  //blog削除
     Route::get('/blog/{id}', 'Influ\Auth\BlogController@showDetail')->name('show');           //blog詳細を表示
     
-    Route::get('/profile', 'Influ\Auth\ProfileController@showList')->name('profiles');                    //profile一覧画面を表示
+    Route::get('/profile', 'Influ\ProfileController@showList')->name('profiles');                    //profile一覧画面を表示
     
     Route::get('/profile/create', 'Influ\ProfileController@showCreate')->name('profilecreate');      //profile登録画面を表示
     Route::post('/profile/store', 'Influ\ProfileController@exeStore')->name('profilestore');         //profileを登録する
