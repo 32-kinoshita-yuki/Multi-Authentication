@@ -7,6 +7,7 @@
         <h2>ブログ編集フォーム</h2>
         <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmitss()">
          @csrf
+         <input type="hidden" name="id" value="{{ $blog->id }}">
             <div class="form-group">
                 <label for="title">
                     タイトル

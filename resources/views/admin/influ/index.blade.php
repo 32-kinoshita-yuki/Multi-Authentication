@@ -30,23 +30,11 @@
            <td>{{ $profile->sns_kind }}</td>
            <td>{{ $profile->sns_url }}</td>
            <td>{{ $profile->sns_genre }}</td>
-           <td><button type="button" class="btnbtn-primary" onclick="location.href='/profile/edit/{{ $profile->id }}'">編集</button></td>
-           <form method="POST" action="{{ route('profiledelete',$profile->id) }}" onSubmit="return checkDelete()">
-           @csrf
-           <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>
          </tr>
           @endforeach
       </table>
   </div>
 </div>
 </div>
-<script>
-function checkDelete(){
-   if(window.confirm('削除してよろしいですか？')){
-    return true;
-   } else {
-    return false;
-   }
-}
-</script>
+
 @endsection

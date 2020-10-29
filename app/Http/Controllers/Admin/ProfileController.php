@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
      $admin_profiles = AdminProfile::all();        //変数名$admin_profilesに AdminProfileモデルのデータをすべて渡す
       
-     return view('admin.auth.profile.index',    //profile一覧を表示する
+     return view('admin.profile.index',    //profile一覧を表示する
     ['admin_profiles' => $admin_profiles]);     //adminprofilesというキーを定義、受け取った$adminprofilesを渡しviewに渡す
     }
      /**
@@ -35,7 +35,7 @@ class ProfileController extends Controller
             \Session::flash('err_msg','データがありません');
            return redirect(route('adminprofiles'));
         }
-       return view('admin.auth.profile.detail',
+       return view('admin.profile.detail',
         ['admin_profile' => $admin_profile]);
       
   }
@@ -45,7 +45,7 @@ class ProfileController extends Controller
    */
    public function showCreate()              
    {
-      return View('admin.auth.profile.create'); //profile登録画面　表示
+      return View('admin.profile.create'); //profile登録画面　表示
    }
   /**
    * PR希望会社を登録する post
@@ -81,9 +81,44 @@ class ProfileController extends Controller
             \Session::flash('err_msg','データがありません');
             return redirect(route('adminprofiles'));
         }
-       return view('admin.auth.profile.edit',
+       return view('admin.profile.edit',
        ['admin_profile' => $admin_profile]);
     }
+    /**
+   * PR希望会社を編集する
+   * @param int $id
+   * @return view
+   */
+ public function exeUpdate(AdminProfileRequest $request)
+ {
+       //プロフィールのデータを受け取る
+       $inputs = $request->all();
+       
+       \DB::beginTransaction();
+       try {
+       //プロフィールを登録
+       $admin_profile = AdminProfile::find($inputs ['id']); 
+       $admin_profile->fill([
+        'name_company' => $inputs['name_company'],
+        'name' => $inputs['name'],
+        'address' => $inputs['address'],
+        'email' => $inputs['email'],
+        'tel' => $inputs['tel'],
+        'url_company' => $inputs['url_company'],
+        'url_pr' => $inputs['url_pr'],
+        'body_pr' => $inputs['body_pr'],
+        'price' => $inputs['price'],
+        ]);
+        $admin_profile->save();
+        \DB::commit();
+       } catch(\Throwable $e) {
+        \DB::rollback();
+           abort(500);
+       }
+       
+       \Session::flash('err_msg', 'プロフィールを更新しました');
+      return redirect(route('adminprofiles'));
+ }
   /**
    * PR希望会社プロフィール削除を表示する
    * @param int $id

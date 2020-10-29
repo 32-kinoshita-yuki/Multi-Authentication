@@ -4,7 +4,7 @@
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>プロフィール登録フォーム</h2>
+        <h2>プロフィール編集フォーム</h2>
         <form method="POST" action="{{ route('profileupdate') }}" onSubmit="return checkSubmit()"> 
          @csrf
             <div class="form-group">
@@ -15,7 +15,7 @@
                     id="name"
                     name="name"
                     class="form-control"
-                    value="{{ old('name') }}"
+                    value="{{ $profile->name }}"
                     type="text"
                 >
                 @if ($errors->has('name'))
@@ -26,16 +26,16 @@
             </div>
             
             <div class="form-group">
-                <input class="form-check-input" type="radio" name="gender" id="gender1" value="女性">
+                <input class="form-check-input" type="radio" name="gender" id="gender1" value="$profile->gender1">
                 <label for="gender" >女性</label>
             </div>
                  
             <div class="form-group">
-                <input class="form-check-input" type="radio" name="gender" id="gender2" value="男性">
+                <input class="form-check-input" type="radio" name="gender" id="gender2" value="$profile->gender2">
                 <label for="gender" >男性</label>
             </div>
              <div class="form-group">
-                <input class="form-check-input" type="radio" name="gender" id="gender3" value="無回答">
+                <input class="form-check-input" type="radio" name="gender" id="gender3" value="$profile->gender3">
                 <label for="gender" >無回答</label>
             </div>
                  
@@ -53,7 +53,7 @@
                     id="age"
                     name="age"
                     class="form-control"
-                    value="{{ old('age') }}"
+                    value="{{ $profile->age}}"
                     type="age"
                 >
                 @if ($errors->has('age'))
@@ -96,7 +96,7 @@
                     id="sns_url"
                     name="sns_url"
                     class="form-control"
-                    value="{{ old('sns_url') }}"
+                    value="{{  $profile->sns_url }}"
                     type="text"
                 >
                 @if ($errors->has('sns_url'))

@@ -67,7 +67,7 @@ class BlogController extends Controller
         \DB::commit();
        }catch(\Throwable $e) {
         \DB::rollback();
-           about(500);
+           abort(500);
        }
        
        \Session::flash('err_msg', 'ブログを登録しました');
@@ -90,6 +90,34 @@ class BlogController extends Controller
        return view('influ.auth.blog.edit',
        ['blog' => $blog]);
  }
+ /**
+   * ブログを編集する
+   * @param int $id
+   * @return view
+   */
+ public function exeUpdate(BlogRequest $request)
+ {
+       //ブログのデータを受け取る
+       $inputs = $request->all();
+       
+       \DB::beginTransaction();
+       try {
+       //ブログを登録
+       $blog = Blog::find($inputs ['id']); 
+       $blog->fill([
+        'title' => $inputs['title'],
+        'body' => $inputs['body'],
+        ]);
+        $blog->save();
+        \DB::commit();
+       } catch(\Throwable $e) {
+        \DB::rollback();
+           abort(500);
+       }
+       
+       \Session::flash('err_msg', 'ブログを更新しました');
+      return redirect(route('blogs'));
+ }
   /**
    * ブログ削除を表示する
    * @param int $id
@@ -105,7 +133,7 @@ class BlogController extends Controller
        //ブログを削除
        Blog::destroy($id);                   //変数名$blogにBlogモデルのデータをすべて渡す
        }catch(\Throwable $e) {
-           about(500);
+           abort(500);
        }
      
       \Session::flash('err_msg','削除しました。');

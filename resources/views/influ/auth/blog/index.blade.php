@@ -24,7 +24,7 @@
            <td>{{ $blog->id }}</td>
            <td><a href="{{ route('show', ['id' => $blog->id]) }}">{{ $blog->title }}</a></td>
            <td>{{ $blog->updated_at }}</td>
-           <td><button type="button" class="btnbtn-primary" onclick="location.href='/blog/edit/{{ $blog->id }}'">編集</button></td>
+           <td><a class="btn btn-primary" href="{{ route('edit', ['id' => $blog->id]) }}">編集</a></td>
            <form method="POST" action="{{ route('delete',$blog->id) }}" onSubmit="return checkDelete()">
            @csrf
            <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>

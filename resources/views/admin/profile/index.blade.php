@@ -25,7 +25,7 @@
            <td>{{ $admin_profile->body_pr }}</td>
            <td>{{ $admin_profile->price }}</td>
           
-           <td><button type="button" class="btnbtn-primary" onclick="location.href='/admin/profile/edit/{{ $admin_profile->id }}'">編集</button></td>
+          <td><a class="btn btn-primary" href="{{ route('adminprofileedit', ['id' => $admin_profile->id]) }}">編集</a></td>
            <form method="POST" action="{{ route('admindelete',$admin_profile->id) }}" onSubmit="return checkDelete()">
            @csrf
            <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>

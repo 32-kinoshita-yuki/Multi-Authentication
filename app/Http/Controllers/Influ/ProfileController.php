@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Influ\Auth;
+namespace App\Http\Controllers\Influ;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
    $profiles = Profile::all();        //変数名$profilesにProfileモデルのデータをすべて渡す
       
-     return view('influ.auth.profile.index',    //profile一覧を表示する
+     return view('influ.profile.index',    //profile一覧を表示する
      ['profiles' => $profiles]);     //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
     }
     /**
@@ -37,7 +37,7 @@ class ProfileController extends Controller
             \Session::flash('err_msg','データがありません');
            return redirect(route('profiles'));
         }
-       return view('influ.auth.profile.detail',
+       return view('influ.profile.detail',
         ['profile' => $profile]);
       
   }
@@ -49,7 +49,7 @@ class ProfileController extends Controller
    */
    public function showCreate()              
    {
-      return View('influ.auth.profile.create'); //profile登録画面　表示
+      return View('influ.profile.create'); //profile登録画面　表示
    }
   /**
    * プロフィールを登録する post
@@ -66,7 +66,7 @@ class ProfileController extends Controller
         \DB::commit();
        }catch(\Throwable $e) {
         \DB::rollback();
-           about(500);
+           abort(500);
        }
        
        \Session::flash('err_msg', 'プロフィールを登録しました');
@@ -86,8 +86,40 @@ class ProfileController extends Controller
             \Session::flash('err_msg','データがありません');
             return redirect(route('profiles'));
         }
-       return view('influ.auth.profile.edit',
+       return view('influ.profile.edit',
        ['profile' => $profile]);
+ }
+ /**
+   * プロフィールを編集する
+   * @param int $id
+   * @return view
+   */
+ public function exeUpdate(ProfileRequest $request)
+ {
+       //プロフィールのデータを受け取る
+       $inputs = $request->all();
+       
+       \DB::beginTransaction();
+       try {
+       //プロフィールを登録
+       $profile = Profile::find($inputs ['id']); 
+       $profile->fill([
+        'name' => $inputs['name'],
+        'gender' => $inputs['gender'],
+        'age' => $inputs['age'],
+        'sns_kind' => $inputs['sns_kind'],
+        'sns_url' => $inputs['sns_url'],
+        'sns_genre' => $inputs['sns_genre'],
+        ]);
+        $profile->save();
+        \DB::commit();
+       } catch(\Throwable $e) {
+        \DB::rollback();
+           abort(500);
+       }
+       
+       \Session::flash('err_msg', 'プロフィールを更新しました');
+      return redirect(route('profiles'));
  }
   /**
    * プロフィール削除を表示する
@@ -104,7 +136,7 @@ class ProfileController extends Controller
        //プロフィールを削除
       Profile::destroy($id);                   //変数名$profileにProfileモデルのデータをすべて渡す
        }catch(\Throwable $e) {
-           about(500);
+           abort(500);
        }
      
       \Session::flash('err_msg','削除しました。');
