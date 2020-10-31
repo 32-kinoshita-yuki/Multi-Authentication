@@ -94,7 +94,7 @@ class ProfileController extends Controller
    * @param int $id
    * @return view
    */
- public function exeUpdate(ProfileRequest $request)
+ public function exeUpdate(ProfileRequet $request)
  {
        //プロフィールのデータを受け取る
        $inputs = $request->all();

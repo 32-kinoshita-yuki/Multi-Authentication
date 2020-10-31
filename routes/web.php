@@ -78,14 +78,14 @@ Route::group(['prefix' => 'influ', 'middleware' => 'guest:influ'], function() {
     });
     
 Route::group(['prefix' => 'influ'], function() {
-    Route::get('/blog', 'Influ\Auth\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
+    Route::get('/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
     
-    Route::get('/blog/create', 'Influ\Auth\BlogController@showCreate')->name('create');       //blog登録画面を表示
-    Route::post('/blog/store', 'Influ\Auth\BlogController@exeStore')->name('store');          //blogを登録する
-    Route::get('/blog/edit/{id}', 'Influ\Auth\BlogController@showEdit')->name('edit');        //blog編集画面を表示
-    Route::post('/blog/update', 'Influ\Auth\BlogController@exeUpdate')->name('update');       //blog編集
-    Route::post('/blog/delete/{id}', 'Influ\Auth\BlogController@exeDelete')->name('delete');  //blog削除
-    Route::get('/blog/{id}', 'Influ\Auth\BlogController@showDetail')->name('show');           //blog詳細を表示
+    Route::get('/blog/create', 'Influ\BlogController@showCreate')->name('create');       //blog登録画面を表示
+    Route::post('/blog/store', 'Influ\BlogController@exeStore')->name('store');          //blogを登録する
+    Route::get('/blog/edit/{id}', 'Influ\BlogController@showEdit')->name('edit');        //blog編集画面を表示
+    Route::post('/blog/update', 'Influ\BlogController@exeUpdate')->name('update');       //blog編集
+    Route::post('/blog/delete/{id}', 'Influ\BlogController@exeDelete')->name('delete');  //blog削除
+    Route::get('/blog/{id}', 'Influ\BlogController@showDetail')->name('show');           //blog詳細を表示
     
     Route::get('/profile', 'Influ\ProfileController@showList')->name('profiles');                    //profile一覧画面を表示
     

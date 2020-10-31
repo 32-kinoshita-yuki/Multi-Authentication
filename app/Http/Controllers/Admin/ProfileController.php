@@ -62,7 +62,7 @@ class ProfileController extends Controller
         \DB::commit();
        }catch(\Throwable $e) {
         \DB::rollback();
-           about(500);
+           abort(500);
        }
        
        \Session::flash('err_msg', 'PR希望会社を登録しました');
@@ -89,7 +89,7 @@ class ProfileController extends Controller
    * @param int $id
    * @return view
    */
- public function exeUpdate(AdminProfileRequest $request)
+ public function exeUpdate(AdminProfileRequet $request)
  {
        //プロフィールのデータを受け取る
        $inputs = $request->all();
@@ -134,7 +134,7 @@ class ProfileController extends Controller
        //PR希望会社プロフィールを削除
       AdminProfile::destroy($id);                   //変数名$profileにProfileモデルのデータをすべて渡す
        }catch(\Throwable $e) {
-           about(500);
+           abort(500);
        }
      
       \Session::flash('err_msg','削除しました。');

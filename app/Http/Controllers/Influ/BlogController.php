@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Influ\Auth;
+namespace App\Http\Controllers\Influ;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class BlogController extends Controller
    {
      $blogs = Blog::all();                   //変数名$blogsにBlogモデルのデータをすべて渡す
       
-     return view('influ.auth.blog.index',    //blog一覧を表示する
+     return view('influ.blog.index',    //blog一覧を表示する
      ['blogs' => $blogs]);                   //blogsというキーを定義、受け取った$blogsを渡しviewに渡す
     }
   
@@ -39,7 +39,7 @@ class BlogController extends Controller
             \Session::flash('err_msg','データがありません');
             return redirect(route('blogs'));
         }
-       return view('influ.auth.blog.detail',
+       return view('influ.blog.detail',
         ['blog' => $blog]);
       
   }
@@ -50,7 +50,7 @@ class BlogController extends Controller
    */
    public function showCreate()              
    {
-      return View('influ.auth.blog.create'); //blog登録画面　表示
+      return View('influ.blog.create'); //blog登録画面　表示
    }
   /**
    * ブログを登録する post
@@ -87,7 +87,7 @@ class BlogController extends Controller
             \Session::flash('err_msg','データがありません');
             return redirect(route('blogs'));
         }
-       return view('influ.auth.blog.edit',
+       return view('influ.blog.edit',
        ['blog' => $blog]);
  }
  /**

@@ -1,4 +1,4 @@
-@extends('layouts.blog.layout')
+@extends('layouts.influ.blog.layout')
 @section('title','ブログ編集')
 @section('content')
 <div class="content">

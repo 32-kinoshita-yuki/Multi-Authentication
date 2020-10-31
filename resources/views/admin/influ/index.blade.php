@@ -1,4 +1,4 @@
-@extends('layouts.profile.layout')
+@extends('layouts.admin.influ.layout')
 @section('title','インフルエンサー一覧')
 @section('content')
 <div class="content"> 

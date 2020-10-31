@@ -11,7 +11,7 @@
 </head>
 <body>
     <header id="top-head">
-     @include('layouts.blog.header')
+     @include('layouts.influ.blog.header')
     </header>
   
     <div class="container">

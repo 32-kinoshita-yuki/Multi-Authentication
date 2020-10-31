@@ -11,7 +11,7 @@
 </head>
 <body>
     <header id="top-head">
-     @include('layouts.influ.profile.header')
+     @include('layouts.admin.influ.header')
     </header>
   
     <div class="container">
