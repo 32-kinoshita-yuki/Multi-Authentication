@@ -1,4 +1,4 @@
-@extends('layouts.profile.layout')
+@extends('layouts.influ.profile.layout')
 @section('title','プロフィール登録')
 @section('content')
 <div class="content">

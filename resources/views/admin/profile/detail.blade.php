@@ -1,4 +1,4 @@
-@extends('layouts.adminprofile.layout')
+@extends('layouts.admin.profile.layout')
 @section('title','PR希望会社詳細')
 @section('content')
 <div class="content"> 
