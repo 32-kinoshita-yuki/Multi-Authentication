@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Influ;  // Influ add
 
 use App\Http\Controllers\Controller; //add
 use Illuminate\Http\Request;
+use App\Http\Controllers\Influ\ProfileController; //Profileコントローラー
+use App\Profile; //Profileモデル
 
 class HomeController extends Controller
 {
@@ -26,4 +28,24 @@ class HomeController extends Controller
     {
         return view('influ.home');
     }
+     /**
+   * プロフィール詳細を表示する
+   * @param int $id
+   * @return view
+   */
+   
+    
+  public function showDetail($id) 
+  {
+      $profile = Profile::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
+       
+        if (is_null($profile))
+        {                    //もしnullだったらindexにredirectさせる
+            \Session::flash('err_msg','データがありません');
+           return redirect(route('profiles'));
+        }
+       return view('influ.home.inde',
+        ['profile' => $profile]);
+      
+  }
 }
