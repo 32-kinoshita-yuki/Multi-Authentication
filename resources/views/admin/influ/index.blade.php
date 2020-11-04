@@ -6,8 +6,6 @@
   <div class="col-md-10 col-md-offset-2">
       <h2>インフルエンサー一覧</h2>
      
-     
-     
       
        @if (session('err_msg'))
       <p class="texit-danger">
@@ -37,8 +35,9 @@
          </tr>
           @endforeach
       </table>
+  
   </div>
-</div>
+ </div>
 </div>
 
 @endsection

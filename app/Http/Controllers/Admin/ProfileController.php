@@ -98,6 +98,9 @@ class ProfileController extends Controller
        try {
        //プロフィールを登録
        $admin_profile = AdminProfile::find($inputs ['id']); 
+       if (is_null($admin_profile)){
+          abort(404);
+          }
        $admin_profile->fill([
         'name_company' => $inputs['name_company'],
         'name' => $inputs['name'],

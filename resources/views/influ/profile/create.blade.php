@@ -125,7 +125,7 @@
             </div>
             <div class="form-group">
               <input class="form-check-input" type="checkbox" name="sns_genre" id="sns_genre5" value="料理">
-              <label for="sns_genre">グラビア</lavel>
+              <label for="sns_genre">料理</lavel>
             </div>
              <div class="form-group">
               <input class="form-check-input" type="checkbox" name="sns_genre" id="sns_genre6" value="生活・インテリア">

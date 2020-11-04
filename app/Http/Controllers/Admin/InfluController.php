@@ -21,4 +21,9 @@ class InfluController extends Controller
      return view('admin.influ.index',    //profile一覧を表示する
      ['profiles' => $profiles]);     //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
     }
+    /**
+   * インフルエンサー検索
+   */
+   
 }
+

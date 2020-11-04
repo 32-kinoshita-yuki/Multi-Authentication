@@ -54,10 +54,9 @@ Route::group(['prefix' => 'admin'], function() {
     
      //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
-    Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
-    Route::get('home', 'Admin\InfluController@showList')->name('profiles');                        //インフルエンサー一覧
-    });
+    Route::get('home', 'Admin\InfluController@showList')->name('profiles');                       //インフルエンサー一覧
 
+    });
 
 
     //influ　ログイン前
