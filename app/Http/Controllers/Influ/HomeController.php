@@ -33,18 +33,12 @@ class HomeController extends Controller
    * @param int $id
    * @return view
    */
-   
-    
   public function showDetail($id) 
   {
       $profile = Profile::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
-       
-        if (is_null($profile))
-        {                    //もしnullだったらindexにredirectさせる
-            \Session::flash('err_msg','データがありません');
-           return redirect(route('profiles'));
-        }
-       return view('influ.home.inde',
+
+
+       return view('influ.home.index',
         ['profile' => $profile]);
       
   }

@@ -142,5 +142,6 @@ class ProfileController extends Controller
       \Session::flash('err_msg','削除しました。');
        return redirect(route('profiles'));
  }
+ 
   
 }

@@ -116,6 +116,7 @@ class ProfileController extends Controller
         \DB::commit();
        } catch(\Throwable $e) {
         \DB::rollback();
+           dd($e);
            abort(500);
        }
        
