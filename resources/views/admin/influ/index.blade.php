@@ -48,22 +48,23 @@
     <div class="col-xs-10">
      <select name="gender" class="form-control select select-primary mbl" data-toggle="select">
       <option value="">性別</option>
-      <option value="男性" @if($gender1=='男性') selected @endif>男性</option>
-      <option value="女性" @if($gender2=='女性') selected @endif>女性</option>
+      <option value="$gender1"  selected >男性</option>
+      <option value="$gender2"  selected >女性</option>
      </select>
     </div>
   </div>
  
-   <div class="form-group">
+  
+ <div class="form-group">
   <label for="number" class="control-label col-xs-2">使用するSNS</label>
   <div class="col-xs-10">
   <select name="sns_kind" class="form-control select select-primary mbl" data-toggle="select">
     <option value="">全国</option>
     <optgroup label="使用するSNS">
-     <option value="Instagram" @if($sns_kind1=='Instagram') selected @endif>Instagram</option>
-     <option value="Twitter" @if($sns_kind2=='Twitter') selected @endif>Twitter</option>
-     <option value="Youtube" @if($sns_kind3=='Youtube') selected @endif>Youtube</option>
-     <option value="その他" @if($sns_kind4=='その他') selected @endif>その他</option>
+     <option value="$sns_kind1">Instagram</option>
+     <option value="$sns_kind2" >Twitter</option>
+     <option value="$sns_kind3" >Youtube</option>
+     <option value="$sns_kind4" >その他</option>
  </optgroup>
   
   </select>
@@ -80,15 +81,18 @@
  
 @endsection
  
+ 
  @section('table')
   <table class="table table-striped">
   <tr>
-   <th>部署</th>
+   <th>性別</th>
+   <th>使用するSNS</th>
   </tr>
   <!-- loop -->
    @foreach($profiles as $profile)
   <tr>
    <td>{{$profile->gender}}</td>
+   <td>{{$profile->sns_kind}}</td>
   </tr>
   @endforeach
 </table> 

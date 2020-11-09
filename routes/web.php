@@ -101,7 +101,7 @@ Route::group(['prefix' => 'influ'], function() {
     //influ　ログイン後
 Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::post('logout', 'Influ\Auth\LoginController@logout')->name('influ.logout');
-    Route::get('home', 'Influ\HomeController@showDetail')->name('showprofile');       //InfluHome Profile
+    Route::get('/home', 'Influ\ProfileController@showDetail')->name('showprofile');       //InfluHome Profile
    
 });
 Auth::routes();
