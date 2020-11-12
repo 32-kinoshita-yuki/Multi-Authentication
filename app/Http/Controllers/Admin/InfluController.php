@@ -11,24 +11,55 @@ use App\Http\Requests\ProfileRequet;//Profileリクエスト
 class InfluController extends Controller
 {
     /**
-   * インフルエンサー一覧を表示
+   * インフルエンサー検索
    * @param int $id
    * @return view
    */
-    public function showList() 
+    public function showList(Request $request) 
     {
-   $profiles = Profile::all();        //変数名$profilesにProfileモデルのデータをすべて渡す
+     
+     //gender
+     $gender = $request->gender;
+      if ($gender != '') {
+          // 検索されたら検索結果を取得する
+          $profiles = Profile::where('gender', 'like', '%'.$gender.'%')->get();
+      } else {
+          // それ以外はすべてを取得する
+          $profiles = Profile::all();
+      }
+      
+      //sns_kind
+      $sns_kind = $request->sns_kind;
+      if ($sns_kind != '') {
+          // 検索されたら検索結果を取得する
+          $profiles = Profile::where('sns_kind', 'like', '%'.$sns_kind.'%')->get();
+      } else {
+          // それ以外はすべてを取得する
+          $profiles = Profile::all();
+      }
+      
+      //sns_genre
+      $sns_genre = $request->sns_genre;
+      if ($sns_genre != '') {
+          // 検索されたら検索結果を取得する
+          $profiles = Profile::where('sns_genre', 'like', '%'.$sns_genre.'%')->get();
+      } else {
+          // それ以外はすべてを取得する
+          $profiles = Profile::all();
+      }
       
      return view('admin.influ.index',    //profile一覧を表示する
      ['profiles' => $profiles]);     //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
     }
     
+    
+    
   /**
-   * インフルエンサープロフィール検索
+   * インフルエンサー検索
    */
    public function search(ProfileRequet $request)
    {
-
+/**
     //検索する値を取得
     $gender = $request->gender;
     $sns_kind = $request->sns_kind; // 性別 0:指定なし 1:男 2:女 3:その他
@@ -44,10 +75,10 @@ class InfluController extends Controller
     //});
 
     // もし「gender」があれば
-    if(!empty($gender)){ //
-    $query->where('gender','like','%'.$gender.'%'); // カラム名 like
-    }
-
+//    if(!empty($gender)){ //
+    $query->where('gender','男性'); // カラム名 like
+ //  }
+ 
    // もし「sns_kind」があれば
    if(!empty($sns_kind)){
     $query->where('sns_kind',$sns_kind);
@@ -64,9 +95,10 @@ class InfluController extends Controller
    $profiles = $query->get();
 
    return view('admin.influ.index', //profile一覧を表示する
-   ['profiles' => $profiles]); //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
+   ['profiles' => $profiles  ,'gender' => $gender ]); //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
+*/
  }
-  
+ 
    
 }
 
