@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Influ;  // Influ add
 use App\Http\Controllers\Controller; //add
 use Illuminate\Http\Request;
 use App\Http\Controllers\Influ\ProfileController; //Profileコントローラー
+use App\Http\Controllers\Influ\BlogController; //Blogコントローラー
 use App\Profile; //Profileモデル
+use App\Blog; //Blogモデル
 
 class HomeController extends Controller
 {
@@ -26,20 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('influ.home');
+       
+        return view('influ.home.index');
+        
     }
-     /**
-   * プロフィール詳細を表示する
-   * @param int $id
-   * @return view
-   */
-  public function showDetail($id) 
-  {
-      $profile = Profile::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
-
-
-       return view('influ.home.index',
-        ['profile' => $profile]);
-      
-  }
+    
+ 
 }

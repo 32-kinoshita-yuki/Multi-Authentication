@@ -7,6 +7,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="{{ route('blogs') }}">ブログ一覧 <span class="sr-only"></span></a>
       <a class="nav-item nav-link active" href="{{ route('create') }}">ブログ投稿</a>
+      <a class="nav-item nav-link active" href="{{ route('index') }}">MYページに戻る</a>
     </div>
   </div>
 </nav>

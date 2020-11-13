@@ -95,7 +95,7 @@
   
    
  
-@endsection <!--cntent-->
+@endsection <!--content-->
  
  
 

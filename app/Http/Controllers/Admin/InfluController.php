@@ -15,43 +15,41 @@ class InfluController extends Controller
    * @param int $id
    * @return view
    */
-    public function showList(Request $request) 
-    {
-     
-     //gender
-     $gender = $request->gender;
-      if ($gender != '') {
-          // 検索されたら検索結果を取得する
-          $profiles = Profile::where('gender', 'like', '%'.$gender.'%')->get();
-      } else {
-          // それ以外はすべてを取得する
-          $profiles = Profile::all();
-      }
-      
-      //sns_kind
-      $sns_kind = $request->sns_kind;
-      if ($sns_kind != '') {
-          // 検索されたら検索結果を取得する
-          $profiles = Profile::where('sns_kind', 'like', '%'.$sns_kind.'%')->get();
-      } else {
-          // それ以外はすべてを取得する
-          $profiles = Profile::all();
-      }
-      
-      //sns_genre
-      $sns_genre = $request->sns_genre;
-      if ($sns_genre != '') {
-          // 検索されたら検索結果を取得する
-          $profiles = Profile::where('sns_genre', 'like', '%'.$sns_genre.'%')->get();
-      } else {
-          // それ以外はすべてを取得する
-          $profiles = Profile::all();
-      }
-      
-     return view('admin.influ.index',    //profile一覧を表示する
-     ['profiles' => $profiles]);     //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
+    public function showList(Request $request)
+{
+$gender = $request->gender;
+//sns_kind
+$sns_kind = $request->sns_kind;
+//sns_genre
+$sns_genre = $request->sns_genre;
+
+if( $gender == '' and $sns_kind == '' and $sns_genre == '') {
+    $profiles = Profile::all();
+} else {
+    $query = Profile::query();
+
+    if ($gender != '') {
+        // 検索されたら検索結果を取得する
+        $query->where('gender', 'like', '%'.$gender.'%');
     }
-    
+
+    if ($sns_kind != '') {
+       // 検索されたら検索結果を取得する
+       $query->where('sns_kind', 'like', '%'.$sns_kind.'%');
+    }
+
+    if ($sns_genre != '') {
+       // 検索されたら検索結果を取得する
+       $query->where('sns_genre', 'like', '%'.$sns_genre.'%');
+    }
+
+    $profiles = $query->get();
+
+}
+
+return view('admin.influ.index',   //profile一覧を表示する
+['profiles' => $profiles]);        //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
+}
     
     
   /**
