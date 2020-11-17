@@ -39,7 +39,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
 
     });
     
-Route::group(['prefix' => 'admin'], function() {
+    //admin ログイン後
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
     Route::get('/profile', 'Admin\ProfileController@showList')->name('adminprofiles');             //PR希望会社一覧画面表示
     
     Route::get('/profile/create', 'Admin\ProfileController@showCreate')->name('admincreate');      //PR希望会社登録画面を表示
@@ -48,15 +49,13 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('/blog/update', 'Admin\ProfileController@exeUpdate')->name('adminprofileupdate');  //PR希望会社編集
     Route::post('/profile/delete/{id}', 'Admin\ProfileController@exeDelete')->name('admindelete'); //PR希望会社削除
     Route::get('/profile/{id}', 'Admin\ProfileController@showDetail')->name('adminshow');          //PR希望会社詳細を表示
-    
-    
-    });
-    
-     //admin ログイン後
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
+
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
-    Route::get('home', 'Admin\InfluController@showList')->name('adminprofiles');                       //AdminHomeインフルエンサー一覧
+    Route::get('home', 'Admin\InfluController@showList')->name('adminprofiles');                     //AdminHomeインフルエンサー一覧
     Route::post('home', 'Admin\InfluController@showList')->name('adminprofiles');                    //インフルエンサー検索
+    
+    Route::get('home/work/create', 'WorkController@showCreate')->name('workcreate');                        //仕事登録画面を表示
+    Route::post('home/work/store', 'WorkController@exeStore')->name('workstore');                        //仕事を登録する
 
     });
 
