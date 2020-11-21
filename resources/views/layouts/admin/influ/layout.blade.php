@@ -34,7 +34,7 @@
  
       <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
        @yield('content')
-      </div><!-- /.container -->
+      </div>
  
        @yield('table')
        <!-- Bootstrap core JavaScript

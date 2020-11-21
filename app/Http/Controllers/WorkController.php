@@ -13,13 +13,14 @@ class WorkController extends Controller
    /**
    * 仕事を登録する 表示
    * @return view
-   */
+    */
    public function showCreate()              
    {
       return View('admin.work.create'); //登録画面　表示
    }
+   
   /**
-   * ブログを登録する post
+   * 仕事を依頼する post
    */
    public function exeStore(WorkRequest $request) 
    {
@@ -28,15 +29,15 @@ class WorkController extends Controller
        
        \DB::beginTransaction();
        try {
-       //仕事を登録
-       Work::create($inputs); 
-        \DB::commit();
-       }catch(\Throwable $e) {
+           //仕事を登録
+            Work::create($inputs); 
+            \DB::commit();
+           }catch(\Throwable $e) {
+       
         \DB::rollback();
            abort(500);
        }
-       
        \Session::flash('err_msg', '仕事を登録しました');
-      return redirect(route('adminprofiles'));
+      return redirect(route('adminindex'));
    }
 }

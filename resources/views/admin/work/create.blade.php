@@ -1,23 +1,23 @@
 @extends('layouts.admin.influ.layout')
-@section('title', '仕事登録')
+@section('title', 'お仕事依頼')
 @section('content')
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>お仕事登録フォーム</h2>
+        <h2>お仕事依頼フォーム</h2>
         <form method="POST" action="{{ route('workstore') }}" onSubmit="return checkSubmit()">
           @csrf
-          
-           <div class="form-group">
+                <div class="form-group">
                 <label for="pr">
-                    PR内容
+                    PR商品やサービスの説明
                 </label>
-                <textarea
+                <input
                     id="pr"
                     name="pr"
                     class="form-control"
-                    rows="4"
-                >{{ old('pr') }}</textarea>
+                    value="{{ old('pr') }}"
+                    type="text"
+                >
                 @if ($errors->has('pr'))
                     <div class="text-danger">
                         {{ $errors->first('pr') }}
@@ -25,28 +25,13 @@
                 @endif
             </div>
             
-            <div class="form-group">
-                <label for="pr_price">
-                    PR報酬
-                </label>
-                <input
-                    id="pr_price"
-                    name="pr_price"
-                    class="pr_price"
-                    value="{{ old('pr_price') }}"
-                    type="text"
-                >
-                @if ($errors->has('pr_price'))
-                    <div class="text-danger">
-                        {{ $errors->first('pr_price') }}
-                    </div>
-                @endif
-            </div>
+            
            
+          
             <div class="mt-5">
                 
                 <button type="submit" class="btn btn-primary">
-                    登録する
+                    依頼する
                 </button>
             </div>
         </form>

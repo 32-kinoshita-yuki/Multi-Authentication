@@ -10,9 +10,11 @@
      <span>使用するsns:{{ $profile->sns_kind }}</span><br>
      <span>SNSのURL:{{ $profile->sns_url }}</span><br>
      <span>SNSのジャンル:{{ $profile->sns_genre }}</span><br><br>
-    <button type="submit" class="btn btn-primary">
-                    お仕事依頼を申し込む
+    <a href="{{ route('#') }}">
+      <button type="submit" class="btn btn-primary">
+                    このユーザーにお仕事依頼を申し込む
                 </button>
+                </a>
   </div>
 </div>
 @endsection
