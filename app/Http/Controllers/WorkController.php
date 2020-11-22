@@ -33,7 +33,8 @@ class WorkController extends Controller
             Work::create($inputs); 
             \DB::commit();
            }catch(\Throwable $e) {
-       
+       echo $e; //エラーを出力
+        error_log($e,3, '../error.log');//ログを出力
         \DB::rollback();
            abort(500);
        }
