@@ -41,22 +41,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
     
     //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
-    Route::get('/profile', 'Admin\ProfileController@showList')->name('adminprofiles');             //PR希望会社一覧画面表示
+    Route::get('/work', 'WorkController@showList')->name('adminprofiles');             //仕事一覧画面表示
     
-    Route::get('/profile/create', 'Admin\ProfileController@showCreate')->name('admincreate');      //PR希望会社登録画面を表示
-    Route::post('/profile/store', 'Admin\ProfileController@exeStore')->name('adminstore');         //PR希望会社を登録する
-    Route::get('/blog/edit/{id}', 'Admin\ProfileController@showEdit')->name('adminprofileedit');   //PR希望会社編集画面を表示
-    Route::post('/blog/update', 'Admin\ProfileController@exeUpdate')->name('adminprofileupdate');  //PR希望会社編集
-    Route::post('/profile/delete/{id}', 'Admin\ProfileController@exeDelete')->name('admindelete'); //PR希望会社削除
-    Route::get('/profile/{id}', 'Admin\ProfileController@showDetail')->name('adminshow');          //PR希望会社詳細を表示
+    Route::get('/work/create', 'WorkController@showCreate')->name('admincreate');      //仕事登録画面を表示
+    Route::post('/work/store', 'WorkController@exeStore')->name('adminstore');         //仕事を登録する
+    Route::get('/work/edit/{id}', 'WorkController@showEdit')->name('adminprofileedit');   //仕事編集画面を表示
+    Route::post('/work/update', 'WorkController@exeUpdate')->name('adminprofileupdate');  //仕事編集
+    Route::post('/work/delete/{id}', 'WorkController@exeDelete')->name('admindelete'); //仕事削除
+    Route::get('/work/{id}', 'WorkController@showDetail')->name('adminshow');          //仕事詳細を表示
 
     
-    Route::get('home', 'Admin\InfluController@showList')->name('adminindex');                      //AdminHome インフルエンサー一覧
-    Route::post('home', 'Admin\InfluController@showList')->name('adminindex');                     //インフルエンサー検索
+    Route::get('home', 'Admin\InfluController@showList')->name('adminindex');          //AdminHome インフルエンサー一覧
+    Route::post('home', 'Admin\InfluController@showList')->name('adminindex');         //インフルエンサー検索
     
-    Route::get('home/work/create', 'WorkController@showCreate')->name('workcreate');               //仕事登録画面を表示
-    
-    Route::post('home/work/store', 'WorkController@exeStore')->name('workstore');                  //仕事を登録する
+    Route::get('/home/work', 'WorkController@showList')->name('works');                //仕事一覧画面を表示
 
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     });
@@ -92,7 +90,7 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::get('/home/profile/{id}', 'Influ\ProfileController@showDetail')->name('showprofile');          //profile詳細を表示s
     
     
-     Route::get('/home/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
+    Route::get('/home/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
     
     Route::get('/home/blog/create', 'Influ\BlogController@showCreate')->name('create');       //blog登録画面を表示
     Route::post('/home/blog/store', 'Influ\BlogController@exeStore')->name('store');          //blogを登録する

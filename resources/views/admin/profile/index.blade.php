@@ -1,10 +1,10 @@
 @extends('layouts.admin.profile.layout')
-@section('title','PR希望会社一覧')
+@section('title','お仕事一覧')
 @section('content')
 <div class="content"> 
   <div class="row">
   <div class="col-md-10 col-md-offset-2">
-      <h2>PR希望会社一覧</h2>
+      <h2>お仕事一覧</h2>
        @if (session('err_msg'))
       <p class="texit-danger">
          {{ session('err_msg') }}
@@ -19,14 +19,14 @@
               <th></th>
               <th></th>
           </tr>
-          @foreach($admin_profiles as $admin_profile)
+          @foreach($works as $work)
          <tr>
-           <td><a href="{{ route('adminshow', ['id' => $admin_profile->id]) }}">{{ $admin_profile->name }}</a></td>
-           <td>{{ $admin_profile->body_pr }}</td>
-           <td>{{ $admin_profile->price }}</td>
+           <td><a href="{{ route('adminshow', ['id' => $work->id]) }}">{{ $work->name }}</a></td>
+           <td>{{ $work->body_pr }}</td>
+           <td>{{ $work->price }}</td>
           
-          <td><a class="btn btn-primary" href="{{ route('adminprofileedit', ['id' => $admin_profile->id]) }}">編集</a></td>
-           <form method="POST" action="{{ route('admindelete',$admin_profile->id) }}" onSubmit="return checkDelete()">
+          <td><a class="btn btn-primary" href="{{ route('adminprofileedit', ['id' => $work->id]) }}">編集</a></td>
+           <form method="POST" action="{{ route('admindelete',$work->id) }}" onSubmit="return checkDelete()">
            @csrf
            <td><button type="submit" class="btnbtn-primary" onclick=>削除</button></td>
          </tr>

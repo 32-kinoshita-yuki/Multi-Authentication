@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <script src="/js/app.js" defer></script>
     <link href="{{ asset('css/nav.css') }}" rel="stylesheet" type="text/css">
-     <link href="{{ asset('css/influ/blog.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header id="top-head">

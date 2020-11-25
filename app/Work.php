@@ -12,8 +12,15 @@ class Work extends Model
     protected $fillable =
     [
       
-      'pr',
-      'pr_price',
+      'email',
+      'tell',
+      'name',
+      'address',
+      'name_company',
+      'url_company',
+      'url_pr',
+      'body_pr',
+      'price'
      
     ];
 }

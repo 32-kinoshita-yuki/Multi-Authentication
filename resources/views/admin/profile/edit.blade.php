@@ -1,10 +1,10 @@
 @extends('layouts.admin.profile.layout')
-@section('title','PR希望会社編集')
+@section('title','お仕事編集')
 @section('content')
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>マイプロフィール登録編集フォーム</h2>
+        <h2>お仕事情報編集</h2>
          <form method="POST" action="{{ route('adminprofileupdate') }}" onSubmit="return checkSubmit()"> 
          @csrf
             <div class="form-group">
@@ -15,7 +15,7 @@
                     id="name_company"
                     name="name_company"
                     class="form-control"
-                    value="{{ $admin_profile->name_company}}"
+                    value="{{ $work->name_company}}"
                     type="text"
                 >
                 @if ($errors->has('name_company'))
@@ -32,7 +32,7 @@
                     id="name"
                     name="name"
                     class="form-control"
-                    value="{{ $admin_profile->name}}"
+                    value="{{ $work->name}}"
                     type="text"
                 >
                 @if ($errors->has('name'))
@@ -49,7 +49,7 @@
                     id="address"
                     name="address"
                     class="form-control"
-                    value="{{ $admin_profile->address }}"
+                    value="{{ $work->address }}"
                     type="text"
                 >
                 @if ($errors->has('address'))
@@ -66,7 +66,7 @@
                     id="email"
                     name="email"
                     class="form-control"
-                    value="{{ $admin_profile->email }}"
+                    value="{{ $work->email }}"
                     type="email"
                 >
                 @if ($errors->has('email'))
@@ -83,7 +83,7 @@
                     id="tell"
                     name="tell"
                     class="form-control"
-                    value="{{ $admin_profile->tell }}"
+                    value="{{ $work->tell }}"
                     type="text"
                 >
                 @if ($errors->has('tell'))
@@ -100,7 +100,7 @@
                     id="url_company"
                     name="url_company"
                     class="form-control"
-                    value="{{ $admin_profile->url_company }}"
+                    value="{{ $work->url_company }}"
                     type="text"
                 >
                 @if ($errors->has('url_company'))
@@ -117,7 +117,7 @@
                     id="url_pr"
                     name="url_pr"
                     class="form-control"
-                    value="{{ $admin_profile->url_pr }}"
+                    value="{{ $work->url_pr }}"
                     type="text"
                 >
                 @if ($errors->has('url_pr'))
@@ -134,7 +134,7 @@
                     id="body_pr"
                     name="body_pr"
                     class="form-control"
-                    value="{{ $admin_profile->body_pr  }}"
+                    value="{{ $work->body_pr  }}"
                     type="text"
                 >
                 @if ($errors->has('body_pr'))
@@ -151,7 +151,7 @@
                     id="price"
                     name="price"
                     class="form-control"
-                    value="{{ $admin_profile->price }}"
+                    value="{{ $work->price }}"
                     type="text"
                 >
                 @if ($errors->has('price'))

@@ -1,10 +1,10 @@
 @extends('layouts.admin.profile.layout')
-@section('title','PR希望登録')
+@section('title','お仕事登録')
 @section('content')
 <div class="content">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>PR希望登録フォーム</h2>
+        <h2>お仕事登録フォーム</h2>
         <form method="POST" action="{{ route('adminstore') }}" onSubmit="return checkSubmit()"> 
          @csrf
          
