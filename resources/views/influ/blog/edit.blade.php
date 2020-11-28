@@ -2,7 +2,7 @@
 @section('title','ブログ編集')
 @section('content')
 <div class="content">
-<div class="row">
+ <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>ブログ編集フォーム</h2>
         <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmitss()">
@@ -49,7 +49,7 @@
             </div>
         </form>
     </div>
-</div>
+ </div>
 </div>
 <script>
 function checkSubmit(){

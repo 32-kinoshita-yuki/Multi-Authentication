@@ -1,4 +1,4 @@
-@extends('layouts.influ.profile.layout')
+@extends('layouts.admin.influ.layout')
 @section('title','プロフィール詳細')
 @section('content')
 <div class="content"> 
@@ -10,11 +10,10 @@
      <span>使用するsns:{{ $profile->sns_kind }}</span><br>
      <span>SNSのURL:{{ $profile->sns_url }}</span><br>
      <span>SNSのジャンル:{{ $profile->sns_genre }}</span><br><br>
-   
       <button type="submit" class="btn btn-primary">
                     このユーザーにお仕事依頼を申し込む
                 </button>
-                
+              
   </div>
 </div>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Work;
 use App\Http\Requests\WorkRequest;
+use Illuminate\Support\Facades\Log;
 
 class WorkController extends Controller
 {
@@ -29,7 +30,7 @@ class WorkController extends Controller
    */
   public function showDetail($id) 
   {
-      $works = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
+      $work = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
        
         if (is_null($work))
         {                    //もしnullだったらindexにredirectさせる
@@ -57,16 +58,25 @@ class WorkController extends Controller
        //仕事のデータを受け取る
        $inputs = $request->all();
        
+       // DEBUG
+       Log::debug('WorkController start exeStore');//
+       Log::debug('WorkController inputs:' . print_r($inputs) );//配列を出力するためのコマンド
+       
        \DB::beginTransaction();
        try {
            //仕事を登録
             Work::create($inputs); 
             \DB::commit();
             }catch(\Throwable $e) {
+           Log::debug('WorkController '. $e);   //キャッチでとった＄eをLOｇで出力する 絶対必要
+              
             \DB::rollback();
                abort(500);
             }
        \Session::flash('err_msg', '仕事を登録しました');
+       
+        Log::debug ('WorkController end exeStore');
+       
       return redirect(route('adminprofiles'));
    }
    /**
@@ -95,13 +105,14 @@ class WorkController extends Controller
        //仕事のデータを受け取る
        $inputs = $request->all();
        
+        // DEBUG
+       Log::debug('WorkController start exeUpdate');//
+       Log::debug('WorkController inputs:' . print_r($inputs) );//配列を出力するためのコマンド
+       
        \DB::beginTransaction();
        try {
        //仕事を登録
        $work = Work::find($inputs ['id']); 
-       if (is_null($work)){
-          abort(404);
-          }
        $work->fill([
         'name_company' => $inputs['name_company'],
         'name' => $inputs['name'],
@@ -116,8 +127,9 @@ class WorkController extends Controller
         $work->save();
         \DB::commit();
        } catch(\Throwable $e) {
+        Log::debug('WorkController '. $e);   //キャッチでとった＄eをLOｇで出力する 絶対必要
+        
         \DB::rollback();
-           dd($e);
            abort(500);
        }
        
@@ -145,4 +157,39 @@ class WorkController extends Controller
       \Session::flash('err_msg','削除しました。');
        return redirect(route('adminprofiles'));
    }
+   
+    /**
+   * インフルエンサーに仕事一覧を表示する
+   * @param int $id
+   * @return view
+   */
+   
+    public function workList()  
+   {
+     $works = Work::all();              //変数名$worksにWorkモデルのデータをすべて渡す
+      
+     return view('influ.admin.index',    //仕事一覧を表示する
+     ['works' => $works]);              //worksというキーを定義、受け取った$blogsを渡しviewに渡す
+    }
+     /**
+   * インフルエンサーに仕事詳細を表示する
+   * @param int $id
+   * @return view
+   */
+  public function workDetail($id) 
+  {
+      $work = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
+       
+        if (is_null($work))
+        {                    //もしnullだったらindexにredirectさせる
+            \Session::flash('err_msg','データがありません');
+           return redirect(route('adminprofiles'));
+        }
+       return view('influ.admin.detail',
+        ['work' => $work]);
+      
+  }
+   
+   
+   
 }

@@ -82,7 +82,7 @@
           </tr>
           @foreach($profiles as $profile)
          <tr>
-           <td><a href="{{ route('showprofile', ['id' => $profile->id]) }}">{{ $profile->name }}</a></td>
+           <td><a href="{{ route('showinflu', ['id' => $profile->id]) }}">{{ $profile->name }}</a></td>
            <td>{{ $profile->gender }}</td>
            <td>{{ $profile->age }}</td>
            <td>{{ $profile->sns_kind }}</td>

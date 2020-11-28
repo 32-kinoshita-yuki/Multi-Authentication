@@ -7,6 +7,7 @@
         <h2>お仕事情報編集</h2>
          <form method="POST" action="{{ route('adminprofileupdate') }}" onSubmit="return checkSubmit()"> 
          @csrf
+        <input type="hidden" name="id" value="{{ $work->id }}">
             <div class="form-group">
                 <label for="name_company">
                     会社名
@@ -168,7 +169,7 @@
             </div>
         </form>
     </div>
-</div>
+ </div>
 </div>
 <script>
 function checkSubmit(){

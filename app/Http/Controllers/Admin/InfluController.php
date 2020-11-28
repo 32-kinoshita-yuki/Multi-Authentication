@@ -12,6 +12,7 @@ class InfluController extends Controller
 {
     /**
    * インフルエンサー検索
+   * インフルエンサー一覧
    * @param int $id
    * @return view
    */
@@ -49,54 +50,26 @@ if( $gender == '' and $sns_kind == '' and $sns_genre == '') {
 
 return view('admin.influ.index',   //profile一覧を表示する
 ['profiles' => $profiles]);        //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
-}
-    
-    
-  /**
-   * インフルエンサー検索
-   */
-   public function search(ProfileRequet $request)
-   {
-/**
-    //検索する値を取得
-    $gender = $request->gender;
-    $sns_kind = $request->sns_kind; // 性別 0:指定なし 1:男 2:女 3:その他
-    $sns_genre = $request->sns_genre; // ジャンル 0:指定なし 1:生活 2:インテリア News度
-
-    // 検索QUERY
-    $query = Profile::query();
-
-    // 今後利用するがとりあえずここは無視
-    // 結合
-    //$query->join('depts', function ($query) use ($req) {
-    //$query->on('employees.dept_id', '=', 'depts.id');
-    //});
-
-    // もし「gender」があれば
-//    if(!empty($gender)){ //
-    $query->where('gender','男性'); // カラム名 like
- //  }
- 
-   // もし「sns_kind」があれば
-   if(!empty($sns_kind)){
-    $query->where('sns_kind',$sns_kind);
-    }
-
-
-   // もし「sns_genre」があれば
-   if(!empty($sns_genre)){
-    $query->where('sns_genre',$sns_genre);
-    }
-
-   // ページネーション 件数がおおい場合にページに分ける処理
-
-   $profiles = $query->get();
-
-   return view('admin.influ.index', //profile一覧を表示する
-   ['profiles' => $profiles  ,'gender' => $gender ]); //profilesというキーを定義、受け取った$profilesを渡しviewに渡す
-*/
  }
  
+   /**
+   * インフルエンサーに仕事詳細を表示する
+   * @param int $id
+   * @return view
+   */
+  public function influDetail($id) 
+  {
+      $work = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
+       
+        if (is_null($work))
+        {                    //もしnullだったらindexにredirectさせる
+            \Session::flash('err_msg','データがありません');
+           return redirect(route('adminprofiles'));
+        }
+       return view('admin.influ.detail',
+        ['work' => $work]);
+      
+  }
    
 }
 
