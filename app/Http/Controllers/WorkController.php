@@ -12,8 +12,6 @@ class WorkController extends Controller
 {
     /**
    * 仕事一覧を表示する
-   * @param int $id
-   * @return view
    */
    
     public function showList()  
@@ -25,8 +23,6 @@ class WorkController extends Controller
     }
      /**
    * 仕事詳細を表示する
-   * @param int $id
-   * @return view
    */
   public function showDetail($id) 
   {
@@ -43,8 +39,7 @@ class WorkController extends Controller
   }
    /**
    * 仕事を登録する 表示
-   * @return view
-    */
+   */
    public function showCreate()              
    {
       return View('admin.profile.create'); //登録画面　表示

@@ -11,8 +11,8 @@ use App\Http\Requests\ProfileRequet;//Profileリクエスト
 class InfluController extends Controller
 {
     /**
-   * インフルエンサー検索
-   * インフルエンサー一覧
+   *依頼者が見たインフルエンサー検索
+   * 依頼者が見たインフルエンサー一覧
    * @param int $id
    * @return view
    */
@@ -53,21 +53,21 @@ return view('admin.influ.index',   //profile一覧を表示する
  }
  
    /**
-   * インフルエンサーに仕事詳細を表示する
+   * 依頼者が見たインフルエンサー仕事詳細を表示
    * @param int $id
    * @return view
    */
   public function influDetail($id) 
   {
-      $work = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
+      $profile = Profile::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
        
-        if (is_null($work))
+        if (is_null($profile))
         {                    //もしnullだったらindexにredirectさせる
             \Session::flash('err_msg','データがありません');
            return redirect(route('adminprofiles'));
         }
        return view('admin.influ.detail',
-        ['work' => $work]);
+        ['profile' => $profile]);
       
   }
    

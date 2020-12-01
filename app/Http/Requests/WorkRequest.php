@@ -32,7 +32,8 @@ class WorkRequest extends FormRequest
             'url_company' => 'required',
             'url_pr' => 'required',
             'body_pr' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'influid' => 'required'
         ];
     }
 }
