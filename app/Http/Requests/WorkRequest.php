@@ -24,16 +24,16 @@ class WorkRequest extends FormRequest
     public function rules()
     {
         return [
-           'email' => 'required',
-            'tell' => 'required',
+            'name_company' => 'required',
             'name' => 'required',
             'address' => 'required',
-            'name_company' => 'required',
+            'email' => 'required',
+            'tell' => 'required',
             'url_company' => 'required',
             'url_pr' => 'required',
             'body_pr' => 'required',
-            'price' => 'required',
-            'influid' => 'required'
+            'price' => 'required'
+           
         ];
     }
 }

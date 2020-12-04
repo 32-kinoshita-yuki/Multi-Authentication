@@ -1,22 +1,5 @@
-@extends('layouts.admin.influ.layout')
-@section('title','プロフィール詳細')
-@section('content')
-<div class="content"> 
-  <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-  <form method="POST" action="{{ route('adminstore') }}" onSubmit="return checkSubmit()"> 
-         @csrf
-      <h2>{{ $profile->name }}</h2>
-     ID: <input>{{ $profile->id}}</span><br>
-     <span>性別:{{ $profile->gender }}</span><br>
-     <span>年齢:{{ $profile->age }}</span><br>
-     <span>使用するsns:{{ $profile->sns_kind }}</span><br>
-     <span>SNSのURL:{{ $profile->sns_url }}</span><br>
-     <span>SNSのジャンル:{{ $profile->sns_genre }}</span><br><br>
-     
-  
-        <h2>お仕事依頼フォーム</h2>
-        
+<h2>お仕事依頼フォーム</h2>
+ <form method="POST" action="{{ route('adminstore') }}" onSubmit="return checkSubmit()"> 
          <div class="form-group">
                 <label for="name_company">
                     インフルエンサーID
@@ -202,13 +185,8 @@
             </div>
             
   </form>
-
-
-   </div><!--==row===-->
-  </div><!--===col-md-8 col-md-offset-2==-->
-</div><!--==content==-->
-<script>
-   function checkSubmit(){
+  <script>
+function checkSubmit(){
    if(window.confirm('送信してよろしいですか？')){
     return true;
    } else {

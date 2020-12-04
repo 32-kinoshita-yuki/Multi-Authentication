@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Work;
+
 use App\Http\Requests\WorkRequest;
 use Illuminate\Support\Facades\Log;
 
@@ -28,6 +29,7 @@ class WorkController extends Controller
   {
       $work = Work::find($id);     //変数名$profileにProfileモデルのデータをすべて渡す
        
+       
         if (is_null($work))
         {                    //もしnullだったらindexにredirectさせる
             \Session::flash('err_msg','データがありません');
@@ -42,7 +44,7 @@ class WorkController extends Controller
    */
    public function showCreate()              
    {
-      return View('admin.profile.create'); //登録画面　表示
+      return View('admin.influ.detail'); //登録画面　表示
    }
    
   /**
@@ -72,7 +74,7 @@ class WorkController extends Controller
        
         Log::debug ('WorkController end exeStore');
        
-      return redirect(route('adminprofiles'));
+      return redirect(route('adminindex'));
    }
    /**
    * 仕事編集フォームを表示する
@@ -178,7 +180,7 @@ class WorkController extends Controller
         if (is_null($work))
         {                    //もしnullだったらindexにredirectさせる
             \Session::flash('err_msg','データがありません');
-           return redirect(route('adminprofiles'));
+           return redirect(route('works'));
         }
        return view('influ.admin.detail',
         ['work' => $work]);

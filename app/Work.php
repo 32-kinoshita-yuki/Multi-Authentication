@@ -11,7 +11,6 @@ class Work extends Model
       //可変項目
     protected $fillable =
     [
-      
       'email',
       'tell',
       'name',
@@ -20,7 +19,21 @@ class Work extends Model
       'url_company',
       'url_pr',
       'body_pr',
-      'price'
-     
+      'price',
+      'influid',
+      'sns_kind1',
+      'sns_kind2',
+      'sns_kind3',
+      'sns_kind4',
+      'p_sns_kind1',
+      'p_sns_kind2',
+      'p_sns_kind3',
+      'p_sns_kind4',
+      'registr_date',
+      'contract_date',
+      'completion_date',
+      'status',
+      'created_at',
+      'updated_at'
     ];
 }
