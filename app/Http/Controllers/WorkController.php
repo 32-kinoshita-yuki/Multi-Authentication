@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Work;
-
 use App\Http\Requests\WorkRequest;
 use Illuminate\Support\Facades\Log;
 

@@ -27,7 +27,7 @@
                     class="form-control"
                     value="{{ $profile->id }}"
                     type="text"
-                disabled>
+                readonly>
             </div>
          
          
