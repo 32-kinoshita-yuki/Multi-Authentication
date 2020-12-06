@@ -10,7 +10,7 @@
       <span>担当者名:{{ $work->name }}</span><br>
       <span>報酬:{{ $work->price }}</span><br><br>
        <button type="submit" class="btn btn-primary">
-                    PR活動を申し込む
+                    PR依頼を受け入れる
                 </button>
   </div>
 </div>

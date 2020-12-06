@@ -95,7 +95,7 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
      
     Route::get('/home/work/{id}', 'WorkController@workDetail')->name('workShow');            //仕事詳細を表示
      
-     
+    Route::get('/home/request', 'Influ\RequestController@request')->name('request');               //お仕事依頼一覧ページ
      
     
     Route::get('/home/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
@@ -108,7 +108,8 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::get('/home/blog/{id}', 'Influ\BlogController@showDetail')->name('show');           //blog詳細を表示
     
     
-    Route::get('/home/request', 'Influ\RequestController@request')->name('request');           //お仕事依頼一覧ページ
+    
+   
     
     
     Route::post('logout', 'Influ\Auth\LoginController@logout')->name('influ.logout');

@@ -19,4 +19,5 @@ class RequestController extends Controller
      return view('influ.request.index',    //仕事依頼一覧を表示する
      ['works' => $works]);              //worksというキーを定義、受け取った$blogsを渡しviewに渡す
     }
+    
 }

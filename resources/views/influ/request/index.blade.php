@@ -21,7 +21,7 @@
        　　@foreach($works as $work)
        　　<tr>
        　　     <td>{{ $work->updated_at }}</td>
-       　　　　　<td>{{ $work->name_company }}</td>
+       　　     <td><a href="{{ route('workShow', ['id' => $work->id]) }}">{{ $work->name_company }}</a></td>
               <td>{{ $work->price }}</td>
               <td>{{ $work->body_pr }}</td>
        　　</tr>
