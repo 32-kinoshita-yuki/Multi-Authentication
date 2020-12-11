@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function() {
 
     });
     
-    //admin ログイン後
+   //admin ログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function(){
     Route::get('/home/work', 'WorkController@showList')->name('adminprofiles');             //仕事一覧画面表示
     
