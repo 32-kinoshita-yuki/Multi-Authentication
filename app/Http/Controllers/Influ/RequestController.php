@@ -15,13 +15,13 @@ class RequestController extends Controller
    */
     public function request() 
     {
-     // $works = Work::all();              //変数名$worksにWorkモデルのデータをすべて渡す
+      $works = Work::all();              //変数名$worksにWorkモデルのデータをすべて渡す
      $query = Work::query();
      $query->where('influid', Auth::guard('influ')->user()->id);
      $work = $query->get();
      
       return view('influ.request.index' ,   //仕事依頼一覧を表示する
-     ['works' => $works]);              //worksというキーを定義、受け取った$blogsを渡しviewに渡す
+     ['works' => $works]);              //worksというキーを定義、受け取った$worksを渡しviewに渡す
     }
     
 }

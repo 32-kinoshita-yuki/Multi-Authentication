@@ -71,7 +71,7 @@ class WorkController extends Controller
             }
        \Session::flash('err_msg', '仕事を登録しました');
        
-        Log::debug ('WorkController end exeStore');
+        Log::debug ('WorkController end exeStore');//LOG
        
       return redirect(route('adminindex'));
    }
@@ -156,8 +156,6 @@ class WorkController extends Controller
    
     /**
    * インフルエンサーに仕事一覧を表示する
-   * @param int $id
-   * @return view
    */
    
     public function workList()  
@@ -169,8 +167,6 @@ class WorkController extends Controller
     }
      /**
    * インフルエンサーに仕事詳細を表示する
-   * @param int $id
-   * @return view
    */
   public function workDetail($id) 
   {
@@ -185,7 +181,34 @@ class WorkController extends Controller
         ['work' => $work]);
       
   }
-   
-   
-   
+     /**
+   * インフルエンサが仕事を受託する
+   */
+    public function entrust(WorkRequest $request)
+  {
+       //仕事のデータを受け取る
+       $inputs = $request->all();
+       
+       // DEBUG
+       Log::debug('WorkController start exeStore');//
+       Log::debug('WorkController inputs:' . print_r($inputs) );//配列を出力するためのコマンド
+       
+      \DB::beginTransaction();
+      try {
+      //仕事を登録
+       $work = Work::find($inputs ['id']); 
+       $work->fill([
+      'status' => 3,//ステータスを3へ
+      ]);
+       $work->save();
+       \DB::commit();
+      } catch(\Throwable $e) {
+      Log::debug('WorkController '. $e);   //キャッチでとった＄eをLOｇで出力する 絶対必要
+
+      \DB::rollback();
+       abort(500);
+        \Session::flash('err_msg','お仕事依頼を受託しました。');
+        return redirect(route('index'));
+   }
+  }
 }

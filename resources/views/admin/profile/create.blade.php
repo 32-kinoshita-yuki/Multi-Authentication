@@ -170,16 +170,17 @@
                 @endif
             </div>
 
-            <div class="mt-5">
-                
+              <div class="mt-5">
                 <button type="submit" class="btn btn-primary">
                     登録する
                 </button>
-            </div>
+              </div><!--mt-5-->
+              
         </form>
-    </div>
-</div>
-</div>
+    </div><!--col-md-8 col-md-offset-2-->
+</div><!--row-->
+</div><!--content-->
+
 <script>
 function checkSubmit(){
 if(window.confirm('送信してよろしいですか？')){

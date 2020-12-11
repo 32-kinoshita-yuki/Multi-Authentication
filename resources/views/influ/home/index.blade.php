@@ -7,6 +7,7 @@
   <div class="col-md-8 col-md-offset-2">
     <h2>MYプロフィール</h2>
       <h2>{{  Auth::user()->name }}</h2>
+      <span>ID:{{  Auth::user()->influid }}</span><br>
      <span>性別:{{  Auth::user()->gender }}</span><br>
      <span2>年齢:{{  Auth::user()->age }}</span2><br>
      <span>使用するsns:{{ Auth::user()->sns_kind }}</span><br>

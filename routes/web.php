@@ -91,13 +91,12 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::post('/home/profile/delete/{id}', 'Influ\ProfileController@exeDelete')->name('profiledelete'); //profile削除
     Route::get('/home/profile/{id}', 'Influ\ProfileController@showDetail')->name('showprofile');          //profile詳細を表示
     
-    Route::get('/home/work', 'WorkController@workList')->name('works');                      //仕事一覧画面を表示
-     
-    Route::get('/home/work/{id}', 'WorkController@workDetail')->name('workShow');            //仕事詳細を表示
-     
-    Route::get('/home/request', 'Influ\RequestController@request')->name('request');               //お仕事依頼一覧ページ
-     
+    //Route::get('/home/work', 'WorkController@workList')->name('works');              //仕事一覧画面を表示
+    Route::get('/home/request', 'Influ\RequestController@request')->name('request');   //お仕事依頼一覧ページ
     
+    Route::get('/home/request/{id}', 'WorkController@workDetail')->name('workShow');   //仕事詳細を表示
+    Route::post('/home/request/entrust', 'WorkController@entrust')->name('entrust');   //仕事依頼を受託する　WorkController.php#L187
+     
     Route::get('/home/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
     
     Route::get('/home/blog/create', 'Influ\BlogController@showCreate')->name('create');       //blog登録画面を表示
@@ -106,18 +105,10 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::post('/home/blog/update', 'Influ\BlogController@exeUpdate')->name('update');       //blog編集
     Route::post('/home/blog/delete/{id}', 'Influ\BlogController@exeDelete')->name('delete');  //blog削除
     Route::get('/home/blog/{id}', 'Influ\BlogController@showDetail')->name('show');           //blog詳細を表示
-    
-    
-    
-   
-    
-    
+
     Route::post('logout', 'Influ\Auth\LoginController@logout')->name('influ.logout');
     
-    
-    
-    
-    Route::get('/home', 'Influ\HomeController@index')->name('index');                          //InfluHome 
+    Route::get('/home', 'Influ\HomeController@index')->name('index');                          //Home 
    
 });
 Auth::routes();
