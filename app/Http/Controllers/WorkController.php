@@ -182,7 +182,7 @@ class WorkController extends Controller
       
   }
      /**
-   * インフルエンサが仕事を受託する
+   * インフルエンサ-が仕事を受託する
    */
     public function entrust(WorkRequest $request)
   {
@@ -208,7 +208,8 @@ class WorkController extends Controller
       \DB::rollback();
        abort(500);
         \Session::flash('err_msg','お仕事依頼を受託しました。');
-        return redirect(route('index'));
+        return redirect(route('index'));//homeへ
    }
   }
+  
 }

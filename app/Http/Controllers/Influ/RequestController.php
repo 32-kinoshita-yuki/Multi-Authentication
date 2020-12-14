@@ -23,5 +23,13 @@ class RequestController extends Controller
       return view('influ.request.index' ,   //仕事依頼一覧を表示する
      ['works' => $works]);              //worksというキーを定義、受け取った$worksを渡しviewに渡す
     }
-    
+     /**
+   * インフルエンサーログイン時受託したお仕事一覧
+   */
+      public function entrusted()
+   {
+    $works = Work::all();              //変数名$worksにWorkモデルのデータをすべて渡す
+    return view('influ.request.status',    //仕事一覧を表示する
+     ['works' => $works]);              //worksというキーを定義、受け取った$blogsを渡しviewに渡す
+  }
 }

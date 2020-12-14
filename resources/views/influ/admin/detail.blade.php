@@ -5,6 +5,7 @@
   <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <form method="POST" action="{{ route('entrust') }}" onSubmit="return checkSubmit()"> <!--web.php#L98-->
+      @csrf
       <h2>{{ $work->name_company }}</h2>
       <input> ID:{{ $work->id}}</span><br>
       <span>会社の住所:{{ $work->address }}</span><br>

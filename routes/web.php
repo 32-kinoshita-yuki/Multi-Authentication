@@ -95,7 +95,8 @@ Route::group(['prefix' => 'influ', 'middleware' => 'auth:influ'], function(){
     Route::get('/home/request', 'Influ\RequestController@request')->name('request');   //お仕事依頼一覧ページ
     
     Route::get('/home/request/{id}', 'WorkController@workDetail')->name('workShow');   //仕事詳細を表示
-    Route::post('/home/request/entrust', 'WorkController@entrust')->name('entrust');   //仕事依頼を受託する　WorkController.php#L187
+    Route::post('/home/request/entrust', 'WorkController@entrust')->name('entrust');   //仕事依頼を受託する　WorkController#L187
+    Route::get('/home/entrusted', 'Influ\RequestController@entrusted')->name('influentrusted');   //お仕事ステータス画面を表示 RequestController#L29
      
     Route::get('/home/blog', 'Influ\BlogController@showList')->name('blogs');                 //blog一覧画面を表示
     
